@@ -57,7 +57,7 @@ python compare.py
 
 <!-- After running compare.py, paste results/results.md here -->
 
-_(Run the project and paste your results table here!)_
+![Results](results.png)
 
 ---
 
@@ -83,3 +83,25 @@ Real-world quantization tools (like llama.cpp) handle this by **scaling** the we
 - **Python** — scikit-learn, numpy, joblib
 - **Dataset** — [MNIST](http://yann.lecun.com/exdb/mnist/) (70,000 handwritten digit images)
 - **Model** — Multi-layer Perceptron (MLP) classifier
+
+## Web App
+
+Run an interactive digit recognizer in your browser:
+
+```bash
+pip install flask
+python app.py
+```
+
+Then open `http://localhost:5000`, draw a digit, and see how each model version predicts it!
+
+## Limitations & Future Improvements
+
+- **7, 5, and 8 are hard to distinguish** — at 8x8 pixels, these digits look very similar after compression
+- **Small training set** — only 1,797 examples vs. 70,000 in the full MNIST dataset
+- **Handwriting mismatch** — the model learned one style of handwriting, yours may differ
+
+### Ideas for improvement
+- Retrain on the full MNIST dataset for better accuracy
+- Better preprocess drawings before predicting (center and scale the digit)
+- Add more hidden layers to the neural network
